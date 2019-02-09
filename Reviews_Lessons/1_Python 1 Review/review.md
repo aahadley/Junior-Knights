@@ -328,9 +328,6 @@ print(x)
 
 print(a3[3])
 ```
----
----
----
 
 ## Exercises
 ###     **fizzbuzz**
