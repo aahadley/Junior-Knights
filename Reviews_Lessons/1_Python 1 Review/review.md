@@ -340,6 +340,8 @@ fizzbuzz is a classic problem that every programmer should be able to solve.
 ---
 
 ###     **Hex**
+Convert numbers from decimal to hexadecimal. It's trickier than it seems!
+
 - Have the user enter a number.
 - Print the number in hexadecimal notation.
 
@@ -349,6 +351,8 @@ Implement the solution yourself. Do not use Python's `hex()` function.
 *hint*   
 153 = 100 + 50 + 3  
 0x12F = 0x100 + 0x20 + 0xF
+
+Now try it the other way. Read in a string representing a hexadecimal number and print it in decimal.
 
 ---
 
