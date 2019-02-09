@@ -18,10 +18,13 @@ print("My name is", name, "\n I am ", age, "years old.")
 ```
 
 ###     Getting input from the user
-To get input, we use the `input()` function. `input()` takes an optional string as an argument. This string will be used as a prompt for your user.
+To get input, we use the `input()` function. `input()` takes an optional string as an argument. This string will be used as a prompt for your user. By default, this will return a string. If you want another type, you'll need to cast in with `int()`, `float()`, etc.
 
 ```Py
-a = input("Enter a number.")
+s = input("Enter a string.")
+print(s)
+
+a = int(input("Enter a number."))
 print(a)
 ```
 
