@@ -299,7 +299,7 @@ print(my_function(3, 4) + 5)
 ```
 1. First, we define a function called `my_function`. It takes two arguments, `x` and `y`, adds them, then doubles them and returns the result.
 2. Next, we  pass 3 and 4 to `my_function`.
-3. Then we create a variable `x` and we put the return value of `my_function` in `x`, and print x.
+3. Then we create a variable `x` and we put the return value of `my_function` in `x`, and print `x`.
 4. In the last line, we can see that a function can behave just as a regular variable. We pass 3 and 4 to the function, add 5 to the result, and print it, all in one line.
 
 ---
@@ -362,8 +362,8 @@ Build a two player rock paper scissors game. Rock beats scissors, scissors beats
 - Ask player for their move. Valid moves are "rock", "paper", or "scissors".
 - Have the computer make its choice randomly
 - Compare the user's choice with the computer's choice.
-- If the player wins, print "You win! :)"
-- If the player loses, print "You lose. :("
+- If the player wins, print `You win! :)`
+- If the player loses, print `You lose. :(`
 - Do this repeatedly until the player types "exit", and keep track of the player's score.
 
 *hint*  
