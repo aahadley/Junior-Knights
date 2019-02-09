@@ -25,6 +25,7 @@ a = input("Enter a number.")
 print(a)
 ```
 
+---
 
 ## Data Types
 ###     Numeric Types
@@ -99,6 +100,8 @@ a = True
 b = False
 ```
 
+---
+
 ## Aritmetic Operations
 Adding and subtracting numbers is very intuitive in Python.
 
@@ -157,6 +160,8 @@ b = 3
 print(2**3)
 ```
 
+---
+
 ## Conditional Logic (if-else)
 The format for an if statement is 
 ```Py
@@ -214,6 +219,8 @@ elif not(b == 4 and a > 6) and False:
     print("This will never print")
 ```
 
+---
+
 ## Loops
 ###     while loops
 While loops are a lot like if statements, but with a key difference. After the body of an if statement, the program simply goes to the next line. The general format looks like this.
@@ -226,11 +233,40 @@ while <boolean expressions>:
     statement_n
 ```
 
+### for loops
+for loops allow us to easily create *count controlled* loops. Count controlled means the loop runs a certain number of times.  
+We can do this by taking advantage of the `range()` function. `range()` takes a number, and generates a sequence of numbers counting up to that. For example, `range(5)` represents the sequence {0, 1, 2, 3, 4}. It also takes optional parameters that allow us to further customize this sequence. The format is 
+
+```Py
+range(<start>*, <stop>, <step>*)
+``` 
+where * indicates an optional parameter.  
+
+\<start\> indicates the beginning of the sequence (inclusive), \<stop\> indicates the end of a sequence (non-inclusive), and \<step\> indicates the distance between each number in the sequence. For example, `range(2, 10, 2)` represents the sequence {2, 4, 6, 8}.  
+So to create a loop that runs `n` times, we simply write,  
+
+```Py
+for <variable> in range(n):
+    statement_1
+    statement_2
+    ...
+    statement_n
+```
+
+\<variable\> is a temporary variable that can be used throughout the loop. Here's an example.
+
+```Py
+# This prints every number from 10 to 20 on a separate line.
+for i in range(10, 21):
+    print(i)
+```
+
+---
+
 ## Functions
 In math, we have functions that might look something like this.
 
 f(x) = 2x<sup>2</sup> + 5
-
 
 If you're familiar with this notation, functions in Python should also look familiar.  
 
@@ -266,6 +302,8 @@ print(my_function(3, 4) + 5)
 3. Then we create a variable `x` and we put the return value of `my_function` in `x`, and print x.
 4. In the last line, we can see that a function can behave just as a regular variable. We pass 3 and 4 to the function, add 5 to the result, and print it, all in one line.
 
+---
+
 ## Lists
 We'll talk more about lists today, but here's a quick rundown. You can declare a list by using square brackets with zero or more values, separated by commas.
 
@@ -290,6 +328,9 @@ print(x)
 
 print(a3[3])
 ```
+---
+---
+---
 
 ## Exercises
 ###     **fizzbuzz**
@@ -298,6 +339,8 @@ fizzbuzz is a classic problem that every programmer should be able to solve.
 - If the number is divisible by 3, print "fizz".
 - If the number is divisible by 5, print "buzz".
 - If the number is divisible by 15, print "fizzbuzz".
+
+---
 
 ###     **Hex**
 - Have the user enter a number.
@@ -310,7 +353,9 @@ Implement the solution yourself. Do not use Python's `hex()` function.
 153 = 100 + 50 + 3  
 0x12F = 0x100 + 0x20 + 0xF
 
-###     **Rock, Paper, Scissors****
+---
+
+###     **Rock, Paper, Scissors**
 Build a two player rock paper scissors game. Rock beats scissors, scissors beats paer, paper beats rock.
 
 - Ask player for their move. Valid moves are "rock", "paper", or "scissors".
