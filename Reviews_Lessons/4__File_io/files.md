@@ -185,4 +185,5 @@ sum at the end of the file.
     - Ask the user for a filename containing the checksum
     - Calculate the checksum for the input file and compare.
 
+---
 Go [here](https://github.com/aahadley/Junior-Knights/tree/master/Reviews_Lessons/4__File_io) for some sample files to use.
