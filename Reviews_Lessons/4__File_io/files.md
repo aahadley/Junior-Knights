@@ -155,7 +155,7 @@ If you don't have this program, you can dowload it from this repository.
 
 
 ## hexdump
-- Ask the user for a file name.
+- Ask the user for a file name. Open in 'rb+'.
 - Print the contents of the file as a series of hexadecimal digits in groups of 4.
 
 ### Example
@@ -176,7 +176,7 @@ number. (We'll use 1024 for this example), then you append that number to the en
 make sure the file is the same is calculate your own checksum and compare it with the 
 sum at the end of the file.  
 
-- Ask the user for a filename, open in 'r+'
+- Ask the user for a filename, open in 'rb+'
 - Have the user choose: check or append
 - if append:
     - Calculate the checksum for the file.
