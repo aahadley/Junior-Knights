@@ -1,7 +1,7 @@
 # Python Review
 This is brief a one-page review of everything you've already learned. You can think of it as a cheat sheet to refer back to when you forget how to do something. If you want further explanations, check out the [*Introduction to Python* page](http://www.eecs.ucf.edu/JuniorKnights/material/), or [Rachael's slides](https://github.com/rsera/Junior-Knights).  
 
-https://docs.python.org/2/tutorial/datastructures.html
+https://docs.python.org/3/tutorial/datastructures.html
 
 ## Input/Output
 ###     Printing to the screen
