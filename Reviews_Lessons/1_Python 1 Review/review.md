@@ -107,7 +107,7 @@ b = False
 
 ---
 
-## Aritmetic Operations
+## Arithmetic Operations
 Adding and subtracting numbers is very intuitive in Python.
 
 ```Py
@@ -276,7 +276,7 @@ f(x) = 2x<sup>2</sup> + 5
 If you're familiar with this notation, functions in Python should also look familiar.  
 
 ```Py
-def function_name(<arguments>)
+def function_name(<arguments>):
     statement_1
     statement_2
     ...
@@ -291,7 +291,7 @@ This is the final value that a funtion might put into a variable.
 Let's see an example.
 
 ```Py
-def my_function(x, y)
+def my_function(x, y):
     r = x+y
     r *= 2
 
