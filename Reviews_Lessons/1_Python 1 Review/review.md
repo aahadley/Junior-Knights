@@ -322,16 +322,167 @@ a4 = [3, "a", True, a2, my_function(3,4)]
 The things inside the list are called members. To access a specific member of a list, type the name of the list, followed by the index of the desired member. Remember, we start counting from 0!
 
 Try to determine the output of this program.
+
 ```Py
 a1 = []
 a2 = [1]
 a3 = [1, 2, 3]
-a4 = [3, "a", True, a2, my_function(3,4)]
+a4 = [3, "a", True, a2, my_function(3,4), my_function]
 
 x = a2[0]
 print(x)
 
 print(a3[3])
+
+print(a4[5](a4[4], 1))
+
+# You can use the + operator to add elements to a list, 
+# or to add all elements in one list to another.
+a3 += 4
+a3 += a4
+
+print(a3)
+```
+
+---
+
+## Tuples
+Tuples are like lists, except they are immutable and a little bit faster. You declare them with `()`, and can index them just like lists, but you can't change them after they're created. Since we're using parentheses, we have to be careful about declaring tuples with one element. `t = (1)` would just assign an integer, so python provides an alternate syntax `t = 1,` for this.
+
+```Py
+t1 = ()
+t2 = 1,
+t3 = (1, 2, 3)
+t4 = (3, "a", True, t2, my_function(3,4), my_function)
+
+t4[3] = 5 # This will throw an error, because tuples are immutable!
+
+# Addition works the same with tuples as it does with lists
+t3 += t4
+
+print(t3)
+```
+
+---
+
+## Sets
+Sets are another data structure used to create *unordered* collections of *distinct* elements. These behave just like sets in mathematics. We declare sets using `{}` but there's a catch. `s = {}` would create an empty dictionary, so to create an empty set, we use `s = set()`. We are also more limited with what we can add to a set, than with what we can add to lists or tuples. In particular, you can't add a list or a set to a set.
+
+```Py
+s1 = set()
+s2 = {1}
+s3 = {1, 2, 3}
+s4 = {3, "a", True, my_function(3,4), my_function}
+
+print({1} == {1, 1} == {1, 1, 1}) # True
+
+a1 = [1, 2, 3]
+t1 = (1, 2, 3)
+
+s3.add(a1) # throws an error
+s3.add(t1) # is fine.
+```
+
+Sets also support some very useful mathematical operations. 
+
+These operations take two sets, `a` and `b`, and return another set `c`.
+
+| Operation            | Meaning                        | Shorthand    |
+|----------------------|--------------------------------|--------------|
+| `c = a.union(b)`     | All elements in a, or in b     | `c = a | b`  |
+| `c = a.intersect(b)` | All elements in both a and b   | `c = a & b`  |
+| `c = a.difference(b)`| All elements in a but not in b | `c = a - b`  |
+|`c = a.symmetric_difference(b)`|All elements in a or b, but not both|`c = a ^ b`|
+
+```Py
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+print(a | b) # {1, 2, 3, 4, 5}
+print(a & b) # {3}
+print(a - b) # {1, 2}
+print(a ^ b) # {1, 2, 4, 5}
+```
+
+---
+
+## Dictionaries
+Dictionaries are an incredibly useful data structure that allows us to map *keys* to *values*. You can think of this as the equivalent of a hash map in other languages. We declare dictionaries with `d = {key1 : value1, key2 : value2}`. We can then access a value with `d[key]`.
+
+```Py
+d1 = {}
+d2 = {"one" : 1, "two" : 2}
+d3 = {3: "three", "a": 0, "Programming is fun" : True}
+
+facts = {"Programming is fun"                     : True , 
+         "Java is better than Python"             : False, 
+         "Sets can contain duplicate elements"    : False, 
+         "Charmander is the best starter Pokemon" : True }
+
+print(d["one"]) # 1
+
+# You can add to a dictionary like this
+d2["three"] = 3
+
+print(facts["Programming is fun"]) # True
+```
+
+---
+
+## Common Keywords
+These keywords work for lists, tuples, sets, and dictionaries. 
+
+
+where `D` is a list, tuple, set, or dictionary
+| keyword | behavior                                | example   |
+|---------|-----------------------------------------|-----------|
+| in      | Returns `True` if a is in D             | `a in D`  |
+| del     | Delete the element at a specified index | `del D[a] |
+
+\* *(Exception: `del` doesn't work on sets. use `D - {a}` instead)*
+
+
+## Iterables
+Lists, tuples, and sets are all iterable, which means you can use a `for` loop to loop through all its elements. `range()` is a function that returns an iterable, which is why we use it for count controlled loops.  
+
+```Py
+lst = [1, 2, 3, 4, 5]
+tpl = tuple(l) # returns a tuple with the same elements as l
+st  = set(l)   # returns a set with the same elements in l. **does NOT preserve order**
+
+for i in lst:
+    print(i**2)
+
+for i in tpl:
+    print(lst[i-1])
+```
+
+Looping through dictionaries is a bit more complicated. You can use `keys()` to return a list of all the keys in a dictionary, `values()` to return a list of all values, and `items()` to return a list of tuples of the form `key, value`.  
+
+```Py
+dct = {1 : "one", 2 : "two", 3 : "three"}
+
+for i in dct.keys():  # 1 2 3
+    print(i, end=' ') # this puts a space at the end instead of a newline
+
+for i in dct.values(): # one two three
+    print(i, end=' ')
+
+for i, j in dct.items(): # 1 one 2 two 3 three
+    print(i, j, end = ' ')
+```
+
+## Slicing
+You can use slices to get a range of indeces from a list or tuple. The general format is `lst[start:stop:step]`. `step` is optional, `start` is inclusive and defaults to zero if not provided. `stop` defaults to the end of the list if not provided.
+
+```Py
+lst = [1, 2, 3, 4, 5, 6, 7]
+
+print( lst[2:4]   )   # [3, 4]
+print( lst[2:5:2] )   # [3, 5, 7]
+print( lst[:4]    )   # [1, 2, 3, 4]
+print( lst[2:]    )   # [3, 4, 5, 6, 7]
+print( lst[::-1]  )   # [7, 6, 5, 4, 3, 2, 1]
 ```
 
 ## Exercises
