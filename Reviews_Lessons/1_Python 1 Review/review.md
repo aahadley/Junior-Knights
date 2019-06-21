@@ -441,6 +441,7 @@ where `D` is a list, tuple, set, or dictionary
 
 \* *(Exception: `del` doesn't work on sets. use `D - {a}` instead)*
 
+---
 
 ## Iterables
 Lists, tuples, and sets are all iterable, which means you can use a `for` loop to loop through all its elements. `range()` is a function that returns an iterable, which is why we use it for count controlled loops.  
@@ -472,6 +473,8 @@ for i, j in dct.items(): # 1 one 2 two 3 three
     print(i, j, end = ' ')
 ```
 
+---
+
 ## Slicing
 You can use slices to get a range of indeces from a list or tuple. The general format is `lst[start:stop:step]`. `step` is optional, `start` is inclusive and defaults to zero if not provided. `stop` defaults to the end of the list if not provided.
 
@@ -484,6 +487,43 @@ print( lst[:4]    )   # [1, 2, 3, 4]
 print( lst[2:]    )   # [3, 4, 5, 6, 7]
 print( lst[::-1]  )   # [7, 6, 5, 4, 3, 2, 1]
 ```
+
+---
+
+## Comprehensions
+Let's say we want to build a list consisting of all the even numbers from 1-1000. We might do so with a `for` loop like this:
+
+```Py
+lst = []
+for i in range(0, 101, 2):
+    lst += i
+```
+This is all fine and dandy, but we're forgetting the Fundamental Theorem of Computer Science: **programmers are lazy.** Thankfully, python fives us a shorthand for this.
+
+```Py
+evens = [i for i in range(0, 101, 2)]
+```
+
+These can be quite robust. Here are a few examples.
+
+```Py
+squares = [i**2 for i in range(100)] # generates the squares of all values from 0-100
+
+even_squares = [i for i in squares if i % 2 == 0] # generates all even values in squares
+
+plaintext = "hello world"
+
+ciphertexts = ["".join([chr((((ord(letter) - key) - ord('a')) % 26) + ord('a')) for letter in plaintext.lower() if letter != ' '])for key in range(1,27) if key % 2 == 0]
+
+# Generates the caesar cipher of a plaintext for every other possible key.
+# This is needlessly convoluted and is only meant to show how powerful list comprehensions can be.
+
+```
+
+---
+---
+---
+
 
 ## Exercises
 ###     **fizzbuzz**
