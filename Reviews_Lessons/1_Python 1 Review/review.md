@@ -98,6 +98,24 @@ print(name, " is Awesome!")
 print(name, " is ", Aaron + "!")
 ```
 
+Strings can be concatenated with the `+` operator, or multiply concatinated with `*`.
+
+```Py
+s = "To boldly go "
+t = "A long time ago, "
+
+w = "where no one has gone before!"
+g = "in a galaxy far, far away"
+
+print(s + w)
+print(t + g)
+
+deck = "Deck the halls with boughs of holly "
+fa = "fa"
+
+print(deck + fa + "la" * 8) 
+```
+
 ###     Booleans
 Boolean types can  only have one of two values, ```True``` or ```False```.
 ```Py
@@ -118,15 +136,17 @@ c = a - b   # c == 20
 
 # adding floats
 f = 2.5
-g = f + f   # g == 5
+fsum = f + f   # g == 5
+
+# *note* sum() is a built in function so we can't use sum as a variable name
 
 # What happens when we add/subtract a float to an int?
 result = b + f
 print(result)
 
 # We can also make use of the += and -= operations
-print(f += a)
-print(b -= c)
+f += a
+b -= c
 ```
 
 Multiplication and division are just as easy, but there's a catch.
@@ -134,25 +154,25 @@ Multiplication and division are just as easy, but there's a catch.
 a = 5
 b = 2
 
-print(a * b)
+product = a * b
 
 # How do we want to handle division? We have two ways:
 #   The first is floating point division. This is just like punching numbers into your
 # calculator.
 
-print(a / b)
+integer_quotient = a / b
 
 # Sometimes we don't want a decimal value, so we use integer division. Integer division
 # is just like performing "long division" and ignoring the remainder. We specify this by
 # using two slashes "//".
 
-print(a // b)
+quotient = a // b
 
 # 2 goes into 5 exactly 2 times, and leaves a remainder of 1.
 # What if we want the remainder?
 # Then we use the mod operator "%".
 
-print(a % b)
+modulus = a % b
 
 # Exponentiation
 
@@ -162,7 +182,7 @@ b = 3
 # Exponentiation is the term for repeated multiplication. We say that 2 to the third power
 # is equal to 2 * 2 * 2. To do this in Python, we use "**".
 
-print(2**3)
+power = 2**3
 ```
 
 ---
@@ -171,25 +191,25 @@ print(2**3)
 The format for an if statement is 
 ```Py
 if <boolean expression>:
-    statement_1
-    statement_2
+    <statement>
+    <statement>
     ...
-    statement_n
+    <statement>
 
 # Otherwise, go here
 
 elif <boolean expression>:  # These are optional and you can have as many as you like.
-    statement_1
-    statement_2
+    <statement>
+    <statement>
     ...
-    statement_n
+    <statement>
 
-else:   #You can only have one of these. Note that there is no boolean expression.
-
+else:   # You can only have one of these. Note that there is no boolean expression.
+    <statement>
 ...
 ...
 ```
-If the boolean expression is a true statement, then the body of the if statement will execute. Otherwise, it will skip to the end of it.
+If the result of the boolean expression is `True`, then the body of the if statement will execute. Otherwise, it will skip to the end of it.
 
 ###     Example
 
@@ -228,14 +248,31 @@ elif not(b == 4 and a > 6) and False:
 
 ## Loops
 ###     while loops
-While loops are a lot like if statements, but with a key difference. After the body of an if statement, the program simply goes to the next line. The general format looks like this.
+While loops are a lot like if statements, but with a key difference. After the body of an if statement, the program simply goes to the next line. a `while` loop will repeat until its condition is `False`. The general format looks like this.
 
 ```Py
 while <boolean expressions>:
-    statement_1
-    statement_2
+    <statement>
+    <statement>
     ...
-    statement_n
+    <statement>
+```
+
+`while True:` will repeat forever, or until it encounters a `break`. We can use `continue` to jump to the top of a loop.
+
+```Py
+a = 1
+b = 0
+
+while True:
+    a += 1
+    b = random.randint()
+
+    if b == 7:
+        continue
+    
+    if a >= 100:
+        break
 ```
 
 ### for loops
@@ -252,10 +289,10 @@ So to create a loop that runs `n` times, we simply write,
 
 ```Py
 for <variable> in range(n):
-    statement_1
-    statement_2
+    <statement>
+    <statement>
     ...
-    statement_n
+    <statement>
 ```
 
 \<variable\> is a temporary variable that can be used throughout the loop. Here's an example.
@@ -277,22 +314,22 @@ If you're familiar with this notation, functions in Python should also look fami
 
 ```Py
 def function_name(<arguments>):
-    statement_1
-    statement_2
+    <statement>
+    <statement>
     ...
-    statement_n
+    <statement>
 
     return <value>
 ```
 The `def` keyword is short for *define* and signifies to the interpereter that you're about to define a function.  
 <Arguments> is one or more variables that the function will use.  
 The body of the function is a series of steps that the function will carry out. Finally, we see the `return` keyword followed by a return value.  
-This is the final value that a funtion might put into a variable.  
+This is the final value that a function might put into a variable.  
 Let's see an example.
 
 ```Py
 def my_function(x, y):
-    r = x+y
+    r = x + y
     r *= 2
 
     return r
@@ -310,7 +347,7 @@ print(my_function(3, 4) + 5)
 ---
 
 ## Lists
-We'll talk more about lists today, but here's a quick rundown. You can declare a list by using square brackets with zero or more values, separated by commas.
+A list is an *ordered*, *mutable* collection of objects. You can declare a list by using square brackets with zero or more values, separated by commas.
 
 ```Py
 a1 = []
@@ -319,7 +356,7 @@ a3 = [1, 2, 3]
 a4 = [3, "a", True, a2, my_function(3,4)]
 ```
 
-The things inside the list are called members. To access a specific member of a list, type the name of the list, followed by the index of the desired member. Remember, we start counting from 0!
+The things inside the list are called *elements*. To access a specific element of a list, type the name of the list, followed by the index of the desired element. **Remember, we start counting from 0**
 
 Try to determine the output of this program.
 
@@ -327,14 +364,14 @@ Try to determine the output of this program.
 a1 = []
 a2 = [1]
 a3 = [1, 2, 3]
-a4 = [3, "a", True, a2, my_function(3,4), my_function]
+a4 = [3, "a", True, a2, my_function(3,4), print]
 
 x = a2[0]
 print(x)
 
 print(a3[3])
 
-print(a4[5](a4[4], 1))
+a[5](my_function(a[4]))
 
 # You can use the + operator to add elements to a list, 
 # or to add all elements in one list to another.
@@ -398,10 +435,10 @@ These operations take two sets, `a` and `b`, and return another set `c`.
 a = {1, 2, 3}
 b = {3, 4, 5}
 
-print(a | b) # {1, 2, 3, 4, 5}
-print(a & b) # {3}
-print(a - b) # {1, 2}
-print(a ^ b) # {1, 2, 4, 5}
+union        = a | b # {1, 2, 3, 4, 5}
+intersection = a & b # {3}
+difference   = a - b # {1, 2}
+xor          = a ^ b # {1, 2, 4, 5}
 ```
 
 ---
@@ -424,7 +461,7 @@ print(d["one"]) # 1
 # You can add to a dictionary like this
 d2["three"] = 3
 
-print(facts["Programming is fun"]) # True
+print(facts["Charmander is the best starter Pokemon"]) # True
 ```
 
 ---
@@ -434,43 +471,48 @@ These keywords work for lists, tuples, sets, and dictionaries.
 
 
 where `D` is a list, tuple, set, or dictionary
+
 | keyword | behavior                                | example   |
 |---------|-----------------------------------------|-----------|
 | in      | Returns `True` if a is in D             | `a in D`  |
-| del     | Delete the element at a specified index | `del D[a] |
+| del     | Delete the element at a specified index | `del D[a]`|
 
-\* *(Exception: `del` doesn't work on sets. use `D - {a}` instead)*
+\* *(Exception: `del` doesn't work on sets. use `D - {n}` to delete instances of `n` instead)*
 
 ---
 
 ## Iterables
-Lists, tuples, and sets are all iterable, which means you can use a `for` loop to loop through all its elements. `range()` is a function that returns an iterable, which is why we use it for count controlled loops.  
+Strings, lists, tuples, and sets are all iterable, which means you can use a `for` loop to loop through all its elements. `range()` is a function that returns an iterable, which is why we use it for count controlled loops.  
 
 ```Py
 lst = [1, 2, 3, 4, 5]
-tpl = tuple(l) # returns a tuple with the same elements as l
-st  = set(l)   # returns a set with the same elements in l. **does NOT preserve order**
+tpl = tuple(lst)   # returns a tuple with the same elements as l
+ste = set(lst)     # returns a set with the same elements in l. **does NOT preserve order**
+ltr = lst("Aaron") # Returns the letters in "Aaron" as a list
 
 for i in lst:
     print(i**2)
 
 for i in tpl:
     print(lst[i-1])
+
+for letter in "Aaron":
+    print(letter, ord(letter))
 ```
 
-Looping through dictionaries is a bit more complicated. You can use `keys()` to return a list of all the keys in a dictionary, `values()` to return a list of all values, and `items()` to return a list of tuples of the form `key, value`.  
+Looping through dictionaries is a bit more complicated. You can use `keys()` to return a list of all the keys in a dictionary, `values()` to return a list of all values, and `items()` to return a list of tuples of the form `(key, value)`.  
 
 ```Py
 dct = {1 : "one", 2 : "two", 3 : "three"}
 
 for i in dct.keys():  # 1 2 3
-    print(i, end=' ') # this puts a space at the end instead of a newline
+    print(i)          # this puts a space at the end instead of a newline
 
-for i in dct.values(): # one two three
-    print(i, end=' ')
+for i in dct.values(): # one two three (on seperate lines)
+    print(i)
 
-for i, j in dct.items(): # 1 one 2 two 3 three
-    print(i, j, end = ' ')
+for k, v in dct.items(): # 1 one 2 two 3 three
+    print(i, j)
 ```
 
 ---
@@ -498,7 +540,7 @@ lst = []
 for i in range(0, 101, 2):
     lst += i
 ```
-This is all fine and dandy, but we're forgetting the Fundamental Theorem of Computer Science: **programmers are lazy.** Thankfully, python fives us a shorthand for this.
+This is all fine and dandy, but we're forgetting the Fundamental Theorem of Computer Science: **programmers are lazy.** Thankfully, python gives us a shorthand for this.
 
 ```Py
 evens = [i for i in range(0, 101, 2)]
@@ -513,7 +555,7 @@ even_squares = [i for i in squares if i % 2 == 0] # generates all even values in
 
 plaintext = "hello world"
 
-ciphertexts = ["".join([chr((((ord(letter) - key) - ord('a')) % 26) + ord('a')) for letter in plaintext.lower() if letter != ' '])for key in range(1,27) if key % 2 == 0]
+salad = ["".join([chr((((ord(letter) - key) - ord('a')) % 26) + ord('a')) for letter in plaintext.lower() if letter != ' '])for key in range(1,27) if key % 2 == 0]
 
 # Generates the caesar cipher of a plaintext for every other possible key.
 # This is needlessly convoluted and is only meant to show how powerful list comprehensions can be.
