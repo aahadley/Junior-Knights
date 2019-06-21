@@ -605,4 +605,4 @@ Build a two player rock paper scissors game. Rock beats scissors, scissors beats
 - Do this repeatedly until the player types "exit", and keep track of the player's score.
 
 *hint*  
-Generate random numbers with the `random.radint()`
+Generate random numbers with the `random.randint()`
